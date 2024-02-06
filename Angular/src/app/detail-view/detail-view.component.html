@@ -1,0 +1,9 @@
+<dx-data-grid
+    [dataSource]="rowData"
+    [columns]="columnsConfig"
+    (onContentReady)=dataGrid_OnContentReady($event)>
+    <dxo-editing
+        mode="row"
+        [allowUpdating]="true"
+  ></dxo-editing>
+</dx-data-grid>

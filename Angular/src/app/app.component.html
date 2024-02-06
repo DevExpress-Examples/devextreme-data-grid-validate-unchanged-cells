@@ -38,5 +38,17 @@
       <dxi-item name="saveButton"></dxi-item>
       <dxi-item name="revertButton"></dxi-item>
     </dxo-toolbar>
+    <dxo-master-detail
+    [enabled]="true"
+    template="masterDetail"
+    ></dxo-master-detail>
+    <div *dxTemplate="let masterDetailItem of 'masterDetail'">
+      <detail-view
+        #locationDetail
+        [key]="masterDetailItem.key"
+        [rowData]="masterDetailItem.data.Locations"
+        (onContentReady)="detailView_OnContentReady($event, locationDetail)"
+      ></detail-view>
+    </div>
   </dx-data-grid>
 </div>

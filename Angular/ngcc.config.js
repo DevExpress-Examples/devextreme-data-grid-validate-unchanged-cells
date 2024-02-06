@@ -1,15 +1,13 @@
 module.exports = {
-    packages: {
-      'devextreme-angular':  {
-        ignorableDeepImportMatchers: [
-          /devextreme\//,
-          /jszip\//
-        ]
-      },
-      'devextreme' : {
-        ignorableDeepImportMatchers: [
-          /devextreme-quill\//
-        ]
-      }
-    }
-  };
+  devServer: {
+    allowedHosts: ".csb.app",
+  },
+  packages: {
+    "devextreme-angular": {
+      ignorableDeepImportMatchers: [/devextreme\//, /jszip\//],
+    },
+    devextreme: {
+      ignorableDeepImportMatchers: [/devextreme-quill\//],
+    },
+  },
+};
