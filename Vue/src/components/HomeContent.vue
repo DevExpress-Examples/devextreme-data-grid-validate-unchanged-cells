@@ -67,7 +67,7 @@ const dataGridRef = ref<DxDataGrid>();
 
 const validateVisibleRows = () => {
   const dataGridInstance = dataGridRef.value?.instance! as dxDataGrid;
-  const currentChanges = (dataGrid?.option('editing.changes') as DataGridTypes.DataChange[])
+  const currentChanges = (dataGridInstance?.option('editing.changes') as DxDataGridTypes.DataChange[])
     .filter((c) => Object.keys(c.data).length > 0);
   const fakeChanges = dataGridInstance
     ? dataGridInstance
