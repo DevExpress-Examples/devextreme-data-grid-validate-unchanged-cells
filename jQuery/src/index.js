@@ -43,7 +43,7 @@ $(() => {
 
 function validateVisibleRows() {
   const grid = $('#gridContainer').dxDataGrid('instance');
-  const currentChanges = grid.option('editing.changes');
+  const currentChanges = grid.option('editing.changes').filter(c => Object.keys(c.data).length > 0);
   const fakeChanges = grid.getVisibleRows().map((row) => ({ type: 'update', key: row.key, data: {} }));
 
   grid.option('editing.changes', [...currentChanges, ...fakeChanges]);
