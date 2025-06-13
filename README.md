@@ -8,7 +8,7 @@
 
 This example demonstrates how to validate unchanged cells in the DataGrid component with a button click. To implement this functionality, define the `validateVisibleRows` function:
 
-1. Specify rows that need validation. To validate all rows, obtain [visible rows](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#getVisibleRows) and create an array of corresponding change objects. Assign the array to the [changes](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/changes/) property.
+1. Specify rows that need validation. To validate all rows, obtain [visible rows](https://js.devexpress.com/jQuery/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#getVisibleRows) and create an array of corresponding change objects. Assign the array to the [changes](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/editing/changes/) property.
 
 2. [Repaint](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#repaint) the DataGrid.
 
