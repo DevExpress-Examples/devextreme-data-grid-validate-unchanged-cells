@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback, useEffect, useState, useRef,
+} from 'react';
 import Button from 'devextreme-react/button';
 import './App.css';
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 import DataGrid, {
-  DataGridTypes, Column, Editing, PatternRule, RequiredRule, StringLengthRule, Toolbar, Item,
+  type DataGridTypes, Column, Editing, type DataGridRef, PatternRule, RequiredRule, StringLengthRule, Toolbar, Item,
 } from 'devextreme-react/data-grid';
 import notify from 'devextreme/ui/notify';
 import { customers } from './data';
@@ -11,12 +13,12 @@ import { customers } from './data';
 const pattern = /^\(\d{3}\) \d{3}-\d{4}$/i;
 
 function App(): JSX.Element {
-  let grid = React.useRef<DataGrid>(null);
+  const gridRef = useRef<DataGridRef>(null);
   const [clicked, setClicked] = useState<Boolean>(false);
   const [changes, setChanges] = useState<DataGridTypes.DataChange[]>([]);
 
   const validateVisibleRows = React.useCallback(() => {
-    let dataGrid = grid?.current?.instance;
+    let dataGrid = gridRef?.current?.instance();
     const currentChanges = (dataGrid?.option('editing.changes') as DataGridTypes.DataChange[])
       .filter((c) => Object.keys(c.data).length > 0);
     const fakeChanges = dataGrid
@@ -29,7 +31,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     if (changes.length && clicked) {
-      let dataGrid = grid?.current?.instance;
+      let dataGrid = gridRef?.current?.instance();
       dataGrid?.repaint();
       // @ts-expect-error - getController is a private method
       dataGrid?.getController('validating').validate(true).then((result: Boolean) => {
@@ -48,7 +50,7 @@ function App(): JSX.Element {
   return (
     <div className="demo-container">
       <DataGrid
-        ref={grid}
+        ref={gridRef}
         id="grid-container"
         dataSource={customers}
         keyExpr="ID"
