@@ -1,0 +1,68 @@
+@using ASP_NET_Core.Models
+
+<h2>Home</h2>
+
+@(Html.DevExtreme().DataGrid<Customer>()
+    .ID("gridContainer")
+    .DataSource(d => d.Mvc()
+    .Controller("SampleData")
+    .LoadAction("Get")
+    .UpdateAction("Put")
+    .Key("ID"))
+    .Editing(e =>
+    {
+        e.AllowUpdating(true);
+        e.Mode(GridEditMode.Batch);
+    })
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.CompanyName);
+        columns.AddFor(m => m.City);
+        columns.AddFor(m => m.Phone);
+        columns.AddFor(m => m.Fax);
+        columns.AddFor(m => m.State);
+    })
+    .Toolbar(toolbar =>
+    {
+        toolbar.Items(items =>
+        {
+        items.Add()
+         .Name("validate")
+         .Widget(w =>
+           w.Button()
+             .Text("Validate DataGrid")
+             .StylingMode(ButtonStylingMode.Outlined)
+             .OnClick("validateVisibleRows"));
+         items.Add().Name("saveButton");
+         items.Add().Name("revertButton");
+        });
+    })
+    .ShowBorders(true)
+)
+
+<script>
+    function validateVisibleRows() {
+        const grid = $("#gridContainer").dxDataGrid("instance");
+        const currentChanges = grid.option('editing.changes').filter((c) => Object.keys(c.data).length > 0);
+        const fakeChanges = grid.getVisibleRows().map(function (row) {
+            return { type: "update", key: row.data.ID, data: {} };
+        });
+
+        grid.option("editing.changes", [...currentChanges, ...fakeChanges]);
+        grid.repaint();
+
+        grid.getController("validating").validate(true).then(function (result) {
+            const message = result ? "Validation is passed" : "Validation is failed";
+            const type = result ? "success" : "error";
+            DevExpress.ui.notify({
+                message: message,
+                type: type,
+                position: {
+                    offset: "0 50",
+                    at: "bottom",
+                    of: ".demo-container",
+                },
+            });
+        });
+    }
+</script>
