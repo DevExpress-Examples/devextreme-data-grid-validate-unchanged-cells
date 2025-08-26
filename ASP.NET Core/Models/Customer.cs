@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ASP_NET_Core.Models {
+namespace ASP_NET_Core.Models
+{
     public class Customer
     {
-        
+
         public int ID { get; set; }
 
         [Required]
