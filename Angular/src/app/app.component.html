@@ -1,3 +1,47 @@
-<div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+<div class="demo-container">
+  <dx-data-grid
+    [dataSource]="customers"
+    keyExpr="ID"
+    [repaintChangesOnly]="true"
+    [showBorders]="true"
+  >
+    <dxo-data-grid-toolbar>
+      <dxi-data-grid-item location="after">
+        <div *dxTemplate>
+          <dx-button
+            text="Validate DataGrid"
+            stylingMode="outlined"
+            (onClick)="validateVisibleRows()"
+          ></dx-button>
+        </div>
+      </dxi-data-grid-item>
+      <dxi-data-grid-item name="saveButton"></dxi-data-grid-item>
+      <dxi-data-grid-item name="revertButton"></dxi-data-grid-item>
+    </dxo-data-grid-toolbar>
+    <dxo-editing
+      [(changes)]="changes"
+      mode="batch"
+      [allowUpdating]="true"
+    ></dxo-editing>
+    <dxi-data-grid-column dataField="CompanyName">
+      <dxi-data-grid-validation-rule
+        type="required"
+      ></dxi-data-grid-validation-rule>
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="City">
+      <dxi-data-grid-validation-rule
+        type="stringLength"
+        [min]="4"
+      ></dxi-data-grid-validation-rule>
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="Phone">
+      <dxi-data-grid-validation-rule
+        type="pattern"
+        message="Your phone must have '(555) 555-5555 format!'"
+        [pattern]="pattern"
+      ></dxi-data-grid-validation-rule>
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="Fax"></dxi-data-grid-column>
+    <dxi-data-grid-column dataField="State"></dxi-data-grid-column>
+  </dx-data-grid>
 </div>

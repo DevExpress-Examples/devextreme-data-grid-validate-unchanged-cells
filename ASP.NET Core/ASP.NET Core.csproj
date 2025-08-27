@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="DevExtreme.AspNet.Core" Version="25.1.*" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="5.1.0" />
   </ItemGroup>
 
 </Project>
