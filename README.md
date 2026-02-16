@@ -38,7 +38,7 @@ If you want to validate unchanged cells after DataGrid is loaded, call the `vali
 - [getVisibleRows()](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Methods/#getVisibleRows)
 - [onContentReady](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#onContentReady)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-data-grid-validate-unchanged-cells&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-data-grid-validate-unchanged-cells&~~~was_helpful=no)
 
