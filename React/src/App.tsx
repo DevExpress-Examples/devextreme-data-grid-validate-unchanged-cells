@@ -43,8 +43,8 @@ function App(): JSX.Element {
     }
   }, [validateVisibleRows]);
 
-  const onChangesChange = useCallback((changes: DataGridTypes.DataChange[]): void => {
-    setChanges(changes);
+  const onChangesChange = useCallback((newChanges: DataGridTypes.DataChange[]): void => {
+    setChanges(newChanges);
   }, []);
 
   return (
