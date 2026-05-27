@@ -1,10 +1,12 @@
 import { Component, ViewChild, AfterViewChecked } from '@angular/core';
-import { DxDataGridComponent, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import {DxDataGridComponent, DxDataGridTypes, DxDataGridModule} from 'devextreme-angular/ui/data-grid';
 import notify from 'devextreme/ui/notify';
 import { Customer, Service } from './app.service';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
 
 @Component({
   selector: 'app-root',
+  imports: [DxDataGridModule, DxButtonModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [Service],
