@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, AfterViewChecked, ChangeDetectionStrategy } from '@angular/core';
 import {DxDataGridComponent, DxDataGridTypes, DxDataGridModule} from 'devextreme-angular/ui/data-grid';
 import notify from 'devextreme/ui/notify';
 import { Customer, Service } from './app.service';
@@ -9,6 +9,7 @@ import { DxButtonModule } from 'devextreme-angular/ui/button';
   imports: [DxDataGridModule, DxButtonModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [Service],
 })
 export class AppComponent implements AfterViewChecked {
